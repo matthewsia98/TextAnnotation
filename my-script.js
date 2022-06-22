@@ -27,14 +27,17 @@ function showSamples(n) {
                     const [idx, text] = next.value
                     const sampleTable = document.querySelector('#sample-table')
                     const row = document.createElement('tr')
-                    const p = document.createElement('td')
-                    p.setAttribute('id', `${currGenerator}-${idx}`)
-                    p.setAttribute('class', 'data')
+                    const sample = document.createElement('td')
+                    const string = document.createElement('td')
+                    string.setAttribute('id', `${currGenerator}-${idx}`)
+                    string.setAttribute('class', 'data')
 
-                    p.append(text)
-                    row.append(p)
+                    sample.append(idx)
+                    string.append(text)
+                    row.append(sample)
+                    row.append(string)
 
-                    p.addEventListener('mouseup', (event) => {
+                    string.addEventListener('mouseup', (event) => {
                         event.preventDefault()
                         showLabelDiv()
                     })
@@ -70,6 +73,9 @@ async function uploadFiles(event) {
         p.append(`Successfully uploaded ${event.dataTransfer.items.length} files`)
         p.setAttribute('style', 'background-color: lightgreen; border: 1px solid black; width: 90%')
         dropZone.append(p)
+        setTimeout(() => {
+            dropZone.removeChild(p)
+        }, 3000)
         for (let i = 0; i < event.dataTransfer.items.length; i++) {
             if (event.dataTransfer.items[i].kind === 'file') {
                 const file = event.dataTransfer.items[i].getAsFile()
