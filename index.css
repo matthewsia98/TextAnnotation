@@ -1,0 +1,64 @@
+body {
+    margin: 0px;
+}
+
+h1 {
+    background-color: lightcoral;
+    margin: 0px;
+    padding: 5px;
+}
+
+#task-type-div {
+    background-color: lightcoral;
+    height: 20px;
+    padding: 5px;
+}
+
+#label-div {
+    position: absolute;
+    background-color: lightgoldenrodyellow;
+    height: 20px;
+    padding: 5px;
+    visibility: hidden;
+}
+
+#labelledData {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+#working-area {
+    background-color: lightblue;
+    padding: 10px;
+}
+
+#sampleText {
+    margin: 0px;
+}
+
+#table-div {
+    background-color: lightgreen;
+    padding: 10px;
+}
+
+#download, #load-more {
+    padding: 10px;
+}
+
+#drop-zone {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: lightgray;
+    width: 100%;
+    height: 100px;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+}

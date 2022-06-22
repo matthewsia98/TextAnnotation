@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <title>Text Annotation Tool</title>
+        <link rel='stylesheet' href='index.css'>
+    </head>
+    <body>
+        <h1>Text Annotation Tool</h1>
+        <div id='task-type-div'>
+            <label for='task-type'>Select the data type</label>
+            <select id='task-type'>
+                <option value='sentence' selected='selected'>Sentence</option>
+                <option value='str'>STR</option>
+            </select>
+        </div>
+        <div id='working-area'>
+            <div id='label-div'>
+                <label for='labels'>Label</label>
+                <select id='labels' onchange='labelSample()'>
+                    <option value=''></option>
+                    <option value='HAPPY'>Happy</option>
+                    <option value='SAD'>Sad</option>
+                    <option value='ANGRY'>Angry</option>
+                </select>
+            </div>
+            <div id='data-div'>
+                <!--<p id='sampleText'>The quick brown fox jumped over the lazy dog near the bank of the river. This is the second sentence. This is the third sentence. This is the fourth sentence. This is the fifth sentence. This is the sixth sentence. This is the seventh sentence. This is the eighth sentence. This is the ninth sentence. This is the tenth sentence. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, alias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repellat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, incidunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, facere? Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, commodi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quis. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, vitae! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, alias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repellat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, incidunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, facere? Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, commodi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quis. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, vitae! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, alias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repellat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, incidunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, facere? Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, commodi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quis. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, vitae! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, alias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repellat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, incidunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, facere? Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, commodi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quis. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, vitae! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, alias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repellat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, incidunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, facere? Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, commodi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quis. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, vitae! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, alias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repellat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, incidunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, facere? Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, commodi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quis. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, vitae! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, alias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repellat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, incidunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, facere? Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, commodi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quis. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, vitae! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, alias Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repellat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, incidunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, facere? Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, commodi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quis. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, vitae!</p>-->
+            </div>
+        </div>
+
+        <div id='table-div'>
+            <table id='labelledData'>
+                <tr>
+                    <th>Sample</th>
+                    <th>String</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Label</th>
+                </tr>
+            </table>
+        </div>
+
+        <div id='load-more'>
+            <button id='load-1' href='#', onclick='showSamples("1")'>Load 1</button>
+            <button id='load-5' href='#', onclick='showSamples("5")'>Load 5</button>
+            <button href='#', onclick='clearSamples()'>Clear Samples</button>
+        </div>
+
+        <div id='download'>
+            <button href='#' onclick='download_table_as_csv("labelledData")'>Download as CSV</button>
+        </div>
+
+        <div id='drop-zone' ondrop='uploadFiles(event)' ondragover='dragOverHandler(event)'>
+            <p>Upload Files</p>
+        </div>
+        <!--
+        <div>
+            <button id='button'>Click Me</button>
+        </div>
+        <div>
+            <button id='fetch-button'>Fetch Data</button>
+        </div>
+        <div>
+            <form>
+                <label for='number'>Enter a number: </label>
+                <input type='text' id='number'>
+            </form>
+        </div>
+        -->
+        <script src='my-script.js'></script>
+        <script src='student.js'></script>
+    </body>
+</html>
