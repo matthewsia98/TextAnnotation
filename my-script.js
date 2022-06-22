@@ -30,51 +30,65 @@ function clearSamples() {
     dataDiv.innerHTML = ''
 }
 
-var generator
+var generators = []
+var currGenerator
 function showSamples(n) {
     hideLabelTool()
     const dataDiv = document.querySelector('#data-div')
     const mode = document.querySelector('#task-type').value
-
-    for (let i = 0; i < n; i++) {
-        try {
-            const [i, text] = generator.next().value
-            const p = document.createElement('p')
-            p.setAttribute('id', i)
-            p.setAttribute('class', 'data')
-
-            p.append(text)
     
-            p.addEventListener('mouseup', (event) => {
-                event.preventDefault()
-                showLabelDiv()
-            })
-    
-            if (mode === 'sentence') {
-                dataDiv.append(p)
-            } else if (mode === 'str') {
-                const children = dataDiv.childNodes
-                dataDiv.replaceChild(p, children[children.length - 1])
-            }   
-        } catch(e) {
-            console.error('There is no more data to load. Please upload another file.')
+        for (let i = 0; i < n; i++) {
+            if (currGenerator < generators.length) {
+                const next = generators[currGenerator].next()
+                if (!next.done) {
+                    const [idx, text] = next.value
+                    const p = document.createElement('p')
+                    p.setAttribute('id', `${currGenerator}-${idx}`)
+                    p.setAttribute('class', 'data')
+
+                    p.append(text)
+            
+                    p.addEventListener('mouseup', (event) => {
+                        event.preventDefault()
+                        showLabelDiv()
+                    })
+            
+                    if (mode === 'sentence') {
+                        dataDiv.append(p)
+                    } else if (mode === 'str') {
+                        const children = dataDiv.childNodes
+                        dataDiv.replaceChild(p, children[children.length - 1])
+                    }
+                } else {
+                    currGenerator++
+                    i--;
+                }  
+            } else {
+                alert('No more data')
+                break
+            }
         }
-    }
 }
 
-async function uploadFiles(event) {
+function uploadFiles(event) {
     event.preventDefault()
     
     if (event.dataTransfer.items) { // if browser supports DataTransferItemList interface
-        if (event.dataTransfer.items[0].kind === 'file') {
-            const file = event.dataTransfer.items[0].getAsFile()
-            console.log(`Uploaded ${file.name}`)
-            const dropZone = document.querySelector('#drop-zone')
-            const p = document.createElement('p')
-            p.append(`Successfully uploaded ${file.name}`)
-            p.setAttribute('style', 'background-color: lightgreen; border: 1px solid black; width: 90%')
-            dropZone.append(p)
-            generator = await processFile(file)
+        console.log(`${event.dataTransfer.items.length} files uploaded`)
+        for (let i = 0; i < event.dataTransfer.items.length; i++) {
+            console.log(`File ${i}`)
+            if (event.dataTransfer.items[i].kind === 'file') {
+                const file = event.dataTransfer.items[i].getAsFile()
+                console.log(`Uploaded ${file.name}`)
+                const dropZone = document.querySelector('#drop-zone')
+                const p = document.createElement('p')
+                p.append(`Successfully uploaded ${file.name}`)
+                p.setAttribute('style', 'background-color: lightgreen; border: 1px solid black; width: 90%')
+                dropZone.append(p)
+                const generator =  processFile(file)
+                generator.then(gen => {generators.push(gen)})
+                currGenerator = 0
+            }
         }
     }
 }
