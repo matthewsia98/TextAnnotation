@@ -72,7 +72,7 @@ async function uploadFiles(event) {
             const dropZone = document.querySelector('#drop-zone')
             const p = document.createElement('p')
             p.append(`Successfully uploaded ${file.name}`)
-            p.setAttribute('style', 'background-color: lightgreen; border: 1px solid black')
+            p.setAttribute('style', 'background-color: lightgreen; border: 1px solid black; width: 90%')
             dropZone.append(p)
             generator = await processFile(file)
         }
@@ -206,7 +206,7 @@ function download_table_as_csv(table_id, separator = ',') {
     for (var i = 0; i < rows.length; i++) {
         let row = []
         let cols = rows[i].querySelectorAll('td, th');
-        for (let j = 0; j < cols.length; j++) {
+        for (let j = 1; j < cols.length; j++) {
             let data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, '').replace(/(\s\s)/gm, ' ')
             data = data.replace(/"/g, '""');
             row.push('"' + data + '"');
@@ -258,4 +258,12 @@ taskType.addEventListener('change', (event) => {
     } else if (mode === 'sentence') {
         loadBatch.disabled = false
     }
+})
+
+window.addEventListener('dragover', (event) => {
+    event.preventDefault()
+})
+
+window.addEventListener('drop', (event) => {
+    event.preventDefault()
 })

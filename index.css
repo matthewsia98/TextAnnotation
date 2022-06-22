@@ -13,12 +13,23 @@ h1#data-title {
     padding: 5px;    
 }
 
+h1#labelled-title {
+    background-color: lightgreen;
+    margin: 0px;
+    padding: 5px;
+}
+
 #label-div {
     position: absolute;
     background-color: lightgoldenrodyellow;
     height: 20px;
     padding: 5px;
     visibility: hidden;
+}
+
+#main-area {
+    display: flex;
+    flex-direction: row;
 }
 
 #labelledData {
@@ -39,6 +50,7 @@ th, td {
 #working-area {
     background-color: lightblue;
     padding: 10px;
+    flex-grow: 1;
 }
 
 #sampleText {
@@ -48,22 +60,41 @@ th, td {
 #table-div {
     background-color: lightgreen;
     padding: 10px;
+    flex-grow: 1;
 }
 
-#download, #load-more {
+#buttons-div {
+    background-color: violet;
     padding: 10px;
 }
 
 #drop-zone {
     display: flex;
     flex-direction: column;
+    background-color: lightgray;
     border: 1px solid black;
     border-radius: 5px;
-    background-color: lightgray;
-    width: 50%;
-    height: 100px;
-    margin: auto;
-    float: center;
+    width: 25%;
     justify-content: center;
     align-items: center;
+    text-align: center;
+}
+
+#download-button {
+    float: right;
+}
+
+#footer {
+    background-color: lightpink;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+#page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
