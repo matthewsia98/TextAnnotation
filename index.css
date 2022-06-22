@@ -32,7 +32,7 @@ h1#labelled-title {
     flex-direction: row;
 }
 
-#labelledData {
+table {
     width: 100%;
     border-collapse: collapse;
     text-align: center;
@@ -41,6 +41,10 @@ h1#labelled-title {
 th, td {
     border: 2px solid black;
     border-collapse: collapse;
+}
+
+td {
+    max-width: 50vh;
 }
 
 #delete-header {

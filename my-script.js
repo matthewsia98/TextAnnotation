@@ -1,20 +1,3 @@
-/*
-function foo() {
-    const newDiv = document.createElement('div');
-    const newP = document.createElement('p');
-    const node = document.createTextNode('Hello World from JavaScript');
-    newP.appendChild(node);
-    newDiv.appendChild(newP);
-    document.body.appendChild(newDiv);
-}
-
-function buttonClicked(event) {
-    const body = document.querySelector('body')
-    const newDiv = document.createElement('div')
-    newDiv.appendChild(document.createTextNode('Button was clicked'))
-    body.append(newDiv)
-}
-*/
 function dragOverHandler(event) {
     event.preventDefault()
 }
@@ -27,7 +10,7 @@ function hideLabelTool() {
 function clearSamples() {
     hideLabelTool()
     const dataDiv = document.querySelector('#data-div')
-    dataDiv.innerHTML = ''
+    dataDiv.innerHTML = "<h1 id='data-title'>Data</h1>"
 }
 
 var generators = []
@@ -42,22 +25,29 @@ function showSamples(n) {
                 const next = generators[currGenerator].next()
                 if (!next.done) {
                     const [idx, text] = next.value
-                    const p = document.createElement('p')
+                    const sampleTable = document.querySelector('#sample-table')
+                    const row = document.createElement('tr')
+                    const p = document.createElement('td')
                     p.setAttribute('id', `${currGenerator}-${idx}`)
                     p.setAttribute('class', 'data')
 
                     p.append(text)
-            
+                    row.append(p)
+
                     p.addEventListener('mouseup', (event) => {
                         event.preventDefault()
                         showLabelDiv()
                     })
             
                     if (mode === 'sentence') {
-                        dataDiv.append(p)
+                        sampleTable.append(row)
                     } else if (mode === 'str') {
-                        const children = dataDiv.childNodes
-                        dataDiv.replaceChild(p, children[children.length - 1])
+                        /*
+                        const children = sampleTable.childNodes
+                        sampleTable.replaceChild(row, children[children.length - 1])
+                        */
+                        sampleTable.innerHTML = ''
+                        sampleTable.append(row)
                     }
                 } else {
                     currGenerator++
@@ -70,34 +60,32 @@ function showSamples(n) {
         }
 }
 
-function uploadFiles(event) {
+async function uploadFiles(event) {
     event.preventDefault()
     
     if (event.dataTransfer.items) { // if browser supports DataTransferItemList interface
-        console.log(`${event.dataTransfer.items.length} files uploaded`)
+        //console.log(`${event.dataTransfer.items.length} files uploaded`)
+        const dropZone = document.querySelector('#drop-zone')
+        const p = document.createElement('p')
+        p.append(`Successfully uploaded ${event.dataTransfer.items.length} files`)
+        p.setAttribute('style', 'background-color: lightgreen; border: 1px solid black; width: 90%')
+        dropZone.append(p)
         for (let i = 0; i < event.dataTransfer.items.length; i++) {
-            console.log(`File ${i}`)
             if (event.dataTransfer.items[i].kind === 'file') {
                 const file = event.dataTransfer.items[i].getAsFile()
                 console.log(`Uploaded ${file.name}`)
-                const dropZone = document.querySelector('#drop-zone')
-                const p = document.createElement('p')
-                p.append(`Successfully uploaded ${file.name}`)
-                p.setAttribute('style', 'background-color: lightgreen; border: 1px solid black; width: 90%')
-                dropZone.append(p)
-                const generator =  processFile(file)
-                generator.then(gen => {generators.push(gen)})
-                currGenerator = 0
+                const generator = processFile(file)
+                generator.then(gen => {console.log(gen);generators.push(gen)})
             }
         }
+        currGenerator = 0
     }
 }
 
-function processFile(file) {
-    const content = file.text()
-    const lines = content.then(data => data.split('\n'))
-    const generator = lines.then(lines => processLines(lines))
-    
+async function processFile(file) {
+    const content = await file.text()
+    const lines = await content.split('\n')
+    const generator = processLines(lines)
     return generator
 }
 
@@ -122,7 +110,7 @@ function labelSample() {
     const start = (range.startOffset < range.endOffset)? range.startOffset : range.endOffset
     const end = (range.startOffset < range.endOffset)? range.endOffset : range.startOffset
 
-    console.log(`Label: ${label} Start: ${start} End: ${end}`)
+    //console.log(`Label: ${label} Start: ${start} End: ${end}`)
     if (start < end) {
         const table = document.querySelector('#labelledData')
         const sample = document.createElement('tr')
