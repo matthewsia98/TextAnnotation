@@ -4,13 +4,15 @@
         <link rel='stylesheet' href='index.css'>
     </head>
     <body>
-        <h1>Text Annotation Tool</h1>
-        <div id='task-type-div'>
-            <label for='task-type'>Select the data type</label>
-            <select id='task-type'>
-                <option value='sentence' selected='selected'>Sentence</option>
-                <option value='str'>STR</option>
-            </select>
+        <div id='header'>
+            <h1 id='title'>Text Annotation Tool</h1>
+            <div id='task-type-div'>
+                <label for='task-type'>Select the data type</label>
+                <select id='task-type'>
+                    <option value='sentence' selected='selected'>Sentence</option>
+                    <option value='str'>STR</option>
+                </select>
+            </div>
         </div>
         <div id='working-area'>
             <div id='label-div'>
@@ -23,13 +25,16 @@
                 </select>
             </div>
             <div id='data-div'>
+                <h1 id='data-title'>Data</h1>
                 <!--<p id='sampleText'>The quick brown fox jumped over the lazy dog near the bank of the river. This is the second sentence. This is the third sentence. This is the fourth sentence. This is the fifth sentence. This is the sixth sentence. This is the seventh sentence. This is the eighth sentence. This is the ninth sentence. This is the tenth sentence. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, alias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repellat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, incidunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, facere? Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, commodi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quis. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, vitae! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, alias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repellat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, incidunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, facere? Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, commodi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quis. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, vitae! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, alias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repellat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, incidunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, facere? Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, commodi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quis. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, vitae! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, alias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repellat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, incidunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, facere? Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, commodi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quis. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, vitae! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, alias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repellat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, incidunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, facere? Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, commodi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quis. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, vitae! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, alias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repellat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, incidunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, facere? Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, commodi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quis. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, vitae! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, alias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repellat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, incidunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, facere? Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, commodi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quis. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, vitae! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, alias Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repellat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, incidunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, facere? Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, commodi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quis. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, vitae!</p>-->
             </div>
         </div>
 
         <div id='table-div'>
+            <h1 id='labelled-title'>Labelled</h1>
             <table id='labelledData'>
                 <tr>
+                    <th id='delete-header'>Del</th>
                     <th>Sample</th>
                     <th>String</th>
                     <th>Start</th>

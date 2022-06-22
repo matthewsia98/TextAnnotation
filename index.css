@@ -2,16 +2,15 @@ body {
     margin: 0px;
 }
 
-h1 {
+#header {
     background-color: lightcoral;
-    margin: 0px;
-    padding: 5px;
+    padding: 10px;
 }
 
-#task-type-div {
-    background-color: lightcoral;
-    height: 20px;
-    padding: 5px;
+h1#data-title {
+    background-color: lightblue;
+    margin: 0px;
+    padding: 5px;    
 }
 
 #label-div {
@@ -25,11 +24,16 @@ h1 {
 #labelledData {
     width: 100%;
     border-collapse: collapse;
+    text-align: center;
 }
 
 th, td {
     border: 2px solid black;
     border-collapse: collapse;
+}
+
+#delete-header {
+    display: none;
 }
 
 #working-area {
@@ -56,9 +60,10 @@ th, td {
     border: 1px solid black;
     border-radius: 5px;
     background-color: lightgray;
-    width: 100%;
+    width: 50%;
     height: 100px;
-    margin: 10px;
+    margin: auto;
+    float: center;
     justify-content: center;
     align-items: center;
 }

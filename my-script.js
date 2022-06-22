@@ -95,6 +95,9 @@ function* processLines(lines) {
 }
 
 function labelSample() {
+    const deleteHeader = document.querySelector('#delete-header')
+    deleteHeader.style.display = 'table-cell';
+
     const labelSelect = document.querySelector('#labels')
     const label = labelSelect.value
     labelSelect.selectedIndex = 0
@@ -109,11 +112,21 @@ function labelSample() {
     if (start < end) {
         const table = document.querySelector('#labelledData')
         const sample = document.createElement('tr')
+        const sampleDelete = document.createElement('td')
+        const deleteButton = document.createElement('button')
         const sampleId = document.createElement('td')
         const sampleString = document.createElement('td')
         const sampleStart = document.createElement('td')
         const sampleEnd = document.createElement('td')
         const sampleLabel = document.createElement('td')
+
+        deleteButton.textContent = 'x'
+        deleteButton.addEventListener('click', (event) => {
+            event.preventDefault()
+            const row = deleteButton.parentNode.parentNode
+            const table = document.querySelector('#labelledData')
+            table.deleteRow(row.rowIndex)
+        })
 
         sampleId.textContent = selected.anchorNode.parentNode.id
         sampleString.textContent = range.toString()
@@ -121,6 +134,8 @@ function labelSample() {
         sampleEnd.textContent = end
         sampleLabel.textContent = label
 
+        sampleDelete.append(deleteButton)
+        sample.append(sampleDelete)
         sample.append(sampleId)
         sample.append(sampleString)
         sample.append(sampleStart)
@@ -131,23 +146,28 @@ function labelSample() {
 }
 
 function showLabelDiv() {
-    const workingArea = document.querySelector('#working-area')
-    const workingAreaRect = workingArea.getBoundingClientRect()
-
+    const body = document.querySelector('body')
+    const bodyRect = body.getBoundingClientRect()
+    /*
+    const dataArea = document.querySelector('#data-title')
+    const dataAreaRect = dataArea.getBoundingClientRect()
+    */
     const selected = document.getSelection()
     const range = selected.getRangeAt(0)
     const selectionRect = range.getBoundingClientRect()
 
-    const offset = selectionRect.top - workingAreaRect.top
-    //console.log(`Working area top is ${workingAreaRect.top}`)
-    //console.log(`Selection top is ${selectionRect.top}`)
-    //console.log(`Selection top is ${offset} px from working area top`)
-
+    const offset = selectionRect.top - bodyRect.top
+    /*
+    console.log(`Working area top is ${workingAreaRect.top}`)
+    console.log(`Data area top is ${dataAreaRect.top}`)
+    console.log(`Selection top is ${selectionRect.top}`)
+    console.log(`Selection top is ${offset} px from working area top`)
+    */
     const labelDiv = document.querySelector('#label-div')
     const labelRect = labelDiv.getBoundingClientRect()
     labelDiv.style.display = 'inline-block'
     labelDiv.style.left = (selectionRect.left + labelRect.width >= window.innerWidth)? (window.innerWidth - labelRect.width) : selectionRect.left
-    labelDiv.style.top = offset + (labelRect.height)
+    labelDiv.style.top = offset - labelRect.height
     labelDiv.style.visibility = 'visible'
     
     //console.log(`Label Div top is ${labelDiv.style.top}`)
