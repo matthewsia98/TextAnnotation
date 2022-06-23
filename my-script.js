@@ -9,8 +9,8 @@ function hideLabelTool() {
 
 function clearSamples() {
     hideLabelTool()
-    const dataDiv = document.querySelector('#data-div')
-    dataDiv.innerHTML = "<h1 id='data-title'>Data</h1>"
+    const sampleTable = document.querySelector('#sample-table')
+    sampleTable.innerHTML = '<tr><th>Sample</th><th>String</th></tr>'
 }
 
 var generators = []
@@ -49,7 +49,7 @@ function showSamples(n) {
                         const children = sampleTable.childNodes
                         sampleTable.replaceChild(row, children[children.length - 1])
                         */
-                        sampleTable.innerHTML = ''
+                        sampleTable.innerHTML = '<tr><th>Sample</th><th>String</th></tr>'
                         sampleTable.append(row)
                     }
                 } else {
